@@ -1,3 +1,7 @@
+# The game can be run and played using a browser using this link:
+
+https://bit.ly/42r2FI2
+
 # Getting Started with Hangman App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
