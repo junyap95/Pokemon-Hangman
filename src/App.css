@@ -4,9 +4,7 @@
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.App {
-    width: 100vw;
-}
+
 
 .visual-word-box > div {
     flex: 1;
@@ -73,10 +71,19 @@
     /*max-height: 10vw;*/
 
 }
+@media (max-width: 600px) {
+    .buttons-box {
+        margin: 0;
+        padding: 5vw 10vw;
+    }
 
-/*.buttons-box > div {*/
-/*  width: 53%;*/
-/*}*/
+    .btn-default,.btn-clicked {
+        margin: 0;
+        min-width: 10vw;
+        min-height: 10vw;
+        font-size: 10vw;
+    }
+}
 
 .btn-default {
     margin: 0.4vw;
@@ -89,11 +96,15 @@
     width: 4.5vw;
     height: 4.5vw;
 
-
     transition-property: background-color;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out
 }
+/*.buttons-box > div {*/
+/*  width: 53%;*/
+/*}*/
+
+
 
 .btn-clicked {
     margin: 0.4vw;
