@@ -1,136 +1,164 @@
-*{
-  box-sizing: border-box;
-  background-color: #f9ffd7;
-  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+* {
+    box-sizing: border-box;
+    background-color: #fafaff;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 
-.visual-word-box >div {
-  flex: 1;
+.App {
+    width: 100vw;
+}
+
+.visual-word-box > div {
+    flex: 1;
 }
 
 /* Header */
- .word-box, .wrong-letters-box {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content:center;
-  align-items: center;
+.word-box, .wrong-letters-box {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.word-box > div {
+    font-size: 1.5vw;
+
 }
 
 .d-flex {
-  align-items: center;
-  
+    align-items: center;
+
 }
 
 .d-flex > div {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  
+    display: flex;
+    flex: 1;
+    flex-flow: row nowrap;
+    justify-content: center;
 }
-.d-flex > div > h1 {
-  margin: 0;
-  font-weight: bold;
-  color: teal;
+
+.d-flex > div > div {
+    font-size: 3vw;
+    margin: 0;
+    font-weight: bold;
+    color: teal;
 }
 
 /* Header ends */
 
 /* Word */
 .word-box {
- display: flex;
- flex-direction: row;
- gap: 10px;
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
 
 .word-box > h2 {
-  color: teal;
+    color: #30343f;
 }
+
 /* Word ends */
 
 /* Buttons */
 .buttons-box {
-  display: flex;
-  flex-direction: row nowrap;
-  align-items: center;
-  justify-content: center;
-  padding: 25px 0;
-}
-.buttons-box > div {
-  width: 53%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 5vw 10vw;
+    row-gap: 2vh;
+
+
+    /*max-height: 10vw;*/
+
 }
 
+/*.buttons-box > div {*/
+/*  width: 53%;*/
+/*}*/
+
 .btn-default {
-   margin: 10px;
-   font-weight: 600;
-   background-color: teal;
-   color: #f9ffd7;
-   /* padding: 15px; */
-   border: none;
-   border-radius: 100px;
-   width: 55px;
-   height: 55px;
-   transition-property: background-color;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out
+    margin: 0.4vw;
+    font-weight: 600;
+    background-color: teal;
+    color: #fafaff;
+    font-size: 1.5vw;
+    border: none;
+    border-radius: 100px;
+    width: 4.5vw;
+    height: 4.5vw;
+
+
+    transition-property: background-color;
+    transition-duration: 0.3s;
+    transition-timing-function: ease-in-out
 }
 
 .btn-clicked {
-  margin: 10px;
-  font-weight: 400;
-  background-color: none;
-  color: gray;
-  border: none;
+    margin: 0.4vw;
+    font-size: 1.5vw;
 
-  width: 55px;
-  height: 55px;
- 
+    width: 4.5vw;
+    height: 4.5vw;
+    font-weight: bold;
+    background-color: none;
+    color: rgb(128, 128, 128);
+    border: none;
 }
 
 .btn-default:hover {
-  color:teal;
-  cursor: pointer;
-  background-color:#f9ffd7;
-  outline: 4px solid teal;
-  outline-offset: 5px;
-  font-weight: bolder;
+    color: teal;
+    cursor: pointer;
+    background-color: #fafaff;
+    outline: 4px solid teal;
+    outline-offset: 5px;
+    font-weight: bolder;
 }
+
 /* Buttons ends */
 
 /* Visuals */
 .visuals {
-  /* padding-left: 460px; */
-  display: flex;
-  flex-flow: row nowrap;
-  justify-content: center;
-  
+    /* padding-left: 460px; */
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+
 }
 
 .visuals > img {
-  mix-blend-mode: multiply;
-  height: 200px;
+    mix-blend-mode: multiply;
+    height: 20vh;
+
 }
+
 /* Visuals ends */
 
 /* WrongLetters */
 .wrong-letters-box {
-  padding: 20px;
-  color: teal;
-  border: solid teal 1px;
+    font-size: 2vw;
+    color: teal;
+    border-top: solid teal 1px;
+}
+
+.wrong-letters-box > div {
+    padding: 0.2rem;
 }
 
 .wrong-letters-box > button {
-  margin-top: 15px;
-  padding: 6px 12px;
-  border-radius: 0.375rem;
-  border: solid teal 2px;
-  color: teal;
+    /*margin-top: 15px;*/
+    padding: 0.2rem 0.4rem;
+    border-radius: 0.375rem;
+    border: solid teal 2px;
+    color: teal;
 }
- 
-  .wrong-letters-box>button:hover {
-  color:teal;
-  cursor: pointer;
-  background-color:#f9ffd7;
-  outline: 4px solid teal;
-  outline-offset: 5px;
-  font-weight: bolder;
+
+.wrong-letters-box > button:hover {
+    color: teal;
+    cursor: pointer;
+    background-color: #fafaff;
+    outline: 4px solid teal;
+    outline-offset: 5px;
+    font-weight: bolder;
 }

@@ -22,15 +22,15 @@ function WinModal(props) {
           <Modal.Title style={{ color: "teal" }}>Congratulations!</Modal.Title>
         </Modal.Header>
         <Modal.Body
-          style={{ color: "#f9ffd7", background: "teal", size: "large" }}
+          style={{ color: "#fafaff", background: "teal", size: "large" }}
         >
           You win! The answer is {answer}!
         </Modal.Body>
         <Modal.Footer
-          style={{ color: "teal", background: "#f9ffd7", size: "large" }}
+          style={{ color: "teal", background: "#fafaff", size: "large" }}
         >
           <Button
-            style={{ color: "#f9ffd7", background: "teal", border: "none" }}
+            style={{ color: "#fafaff", background: "teal", border: "none" }}
             variant="primary"
             onClick={handleRestart}
           >

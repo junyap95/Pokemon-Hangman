@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { updateAnswer } from "../store/guesses";
 
-// diplays the alphabets chosen by user
+// displays the alphabets chosen by user
 function Word() {
   const [word, setWord] = useState("");
   const dispatch = useDispatch();
@@ -16,9 +16,9 @@ function Word() {
         const response = await fetch(
           "https://random-word-api.herokuapp.com/word?lang=en"
         );
-        const randomword = await response.json();
+        const randomWord = await response.json();
         // change word to uppercase as our alphabets array are created using lowercase charcode
-        const capitalWord = randomword[0].toUpperCase();
+        const capitalWord = randomWord[0].toUpperCase();
         // update state when API fetched
         setWord(capitalWord);
         // update store when API fetched
@@ -42,9 +42,9 @@ function Word() {
       {wordArr.map((char, index) => {
         console.log(char);
         return correctGuesses.includes(char) ? (
-          <h2 key={index}>{char}</h2>
+          <div key={index}>{char}</div>
         ) : (
-          <h2 key={index}>_ </h2>
+          <div key={index}>_ </div>
         );
       })}
       <div></div>

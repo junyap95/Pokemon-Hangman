@@ -42,7 +42,7 @@ function Header() {
         <Visuals />
       </div>
       <div>
-        <h1>HANGMAN</h1>
+        <div>HANGMAN</div>
       </div>
       <div>
         {/* bootstrap component - help button*/}
@@ -53,7 +53,7 @@ function Header() {
           style={{ color: "teal" }}
         >
           <Button
-            style={{ color: "#f9ffd7", background: "teal" }}
+            style={{ color: "#fafaff", background: "teal" }}
             variant="success"
           >
             Need Help?

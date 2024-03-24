@@ -13,8 +13,8 @@ function WrongLetters() {
   // display the wrong letter guessed for each wrong guess
   return (
     <div className="wrong-letters-box">
-      <h3>WRONG LETTERS GUESSED:</h3>
-      <h3>{wrongGuesses.map((item) => `${item}, `)}</h3>
+      <div>WRONG LETTERS GUESSED:</div>
+      <div>{wrongGuesses.map((item) => `${item}, `)}</div>
       <div>{6 - wrongCount} Guesses Left!</div>
       {/* restart button */}
       <button type="button" onClick={handleClick}>

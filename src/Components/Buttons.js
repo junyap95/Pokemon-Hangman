@@ -27,11 +27,11 @@ function Buttons() {
   return (
     // A number of components should be rendered using the array.Map() method. Each component rendered in this way should have a key that uniquely identifies it.
     <div className="buttons-box">
-      <div>
+
         {alphabetsArr.map((item, index) => {
           return <SingleBtn key={index} item={item} />;
         })}
-      </div>
+
     </div>
   );
 }
