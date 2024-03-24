@@ -71,19 +71,7 @@
     /*max-height: 10vw;*/
 
 }
-@media (max-width: 600px) {
-    .buttons-box {
-        margin: 0;
-        padding: 5vw 10vw;
-    }
 
-    .btn-default,.btn-clicked {
-        margin: 0;
-        min-width: 10vw;
-        min-height: 10vw;
-        font-size: 10vw;
-    }
-}
 
 .btn-default {
     margin: 0.4vw;
@@ -172,4 +160,17 @@
     outline: 4px solid teal;
     outline-offset: 5px;
     font-weight: bolder;
+}
+
+@media (max-width: 600px) {
+    .buttons-box {
+        margin: 0;
+        padding: 5vw 18vw;
+    }
+
+    .btn-default,.btn-clicked {
+        width: 8vw;
+        height: 8vw;
+        font-size: 3vw;
+    }
 }
