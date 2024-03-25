@@ -5,7 +5,6 @@
 }
 
 
-
 .visual-word-box > div {
     flex: 1;
 }
@@ -51,7 +50,8 @@
     gap: 10px;
 }
 
-.word-box > h2 {
+.word-box > div {
+    font-size: 1.5vw;
     color: #30343f;
 }
 
@@ -64,44 +64,31 @@
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 5vw 10vw;
+    padding: 3vw 30vw;
     row-gap: 2vh;
-
-
-    /*max-height: 10vw;*/
-
 }
 
-
 .btn-default {
-    margin: 0.4vw;
+    margin: 0.35vw;
     font-weight: 600;
     background-color: teal;
     color: #fafaff;
     font-size: 1.5vw;
     border: none;
     border-radius: 100px;
-    width: 4.5vw;
-    height: 4.5vw;
-
+    width: 3.5vw;
+    height: 3.5vw;
     transition-property: background-color;
     transition-duration: 0.3s;
     transition-timing-function: ease-in-out
 }
-/*.buttons-box > div {*/
-/*  width: 53%;*/
-/*}*/
-
-
 
 .btn-clicked {
-    margin: 0.4vw;
+    margin: 0.35vw;
     font-size: 1.5vw;
-
-    width: 4.5vw;
-    height: 4.5vw;
+    width: 3.5vw;
+    height: 3.5vw;
     font-weight: bold;
-    background-color: none;
     color: rgb(128, 128, 128);
     border: none;
 }
@@ -110,8 +97,8 @@
     color: teal;
     cursor: pointer;
     background-color: #fafaff;
-    outline: 4px solid teal;
-    outline-offset: 5px;
+    outline: 0.2rem solid teal;
+    outline-offset: 0.1rem;
     font-weight: bolder;
 }
 
@@ -136,7 +123,7 @@
 
 /* WrongLetters */
 .wrong-letters-box {
-    font-size: 2vw;
+    font-size: 1.5vw;
     color: teal;
     border-top: solid teal 1px;
 }
@@ -148,7 +135,7 @@
 .wrong-letters-box > button {
     /*margin-top: 15px;*/
     padding: 0.2rem 0.4rem;
-    border-radius: 0.375rem;
+    border-radius: 0.3rem;
     border: solid teal 2px;
     color: teal;
 }
@@ -157,20 +144,29 @@
     color: teal;
     cursor: pointer;
     background-color: #fafaff;
-    outline: 4px solid teal;
-    outline-offset: 5px;
+    outline: 0.3rem solid teal;
+    outline-offset: 0.1rem;
     font-weight: bolder;
 }
 
 @media (max-width: 600px) {
-    .buttons-box {
-        margin: 0;
-        padding: 5vw 18vw;
+    .wrong-letters-box {
+        font-size: 3vw;
     }
 
-    .btn-default,.btn-clicked {
-        width: 8vw;
-        height: 8vw;
+    .word-box > div {
+        font-size: 5vw;
+    }
+
+    .buttons-box {
+        margin: 0;
+        padding: 10vw 6vw;
+    }
+
+    .btn-default, .btn-clicked {
+        margin: 2vw;
+        width: 8.5vw;
+        height: 8.5vw;
         font-size: 3vw;
     }
 }
