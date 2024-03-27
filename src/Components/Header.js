@@ -1,4 +1,3 @@
-import Button from "react-bootstrap/Button";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Popover from "react-bootstrap/Popover";
 import Visuals from "./Visuals";
@@ -42,7 +41,7 @@ function Header() {
         <Visuals />
       </div>
       <div>
-        <div>HANGMAN</div>
+        <div className="hangman-banner">HANGMAN</div>
       </div>
       <div>
         {/* bootstrap component - help button*/}
@@ -50,14 +49,13 @@ function Header() {
           trigger={["hover", "focus"]}
           placement="bottom"
           overlay={popover}
-          style={{ color: "teal" }}
+          style={{ color: "teal"}}
         >
-          <Button
-            style={{ color: "#fafaff", background: "teal" }}
-            variant="success"
-          >
-            Need Help?
-          </Button>
+          <button className="btn-help">
+              <div className="need-help">
+                Need Help?
+              </div>
+          </button>
         </OverlayTrigger>
       </div>
     </div>

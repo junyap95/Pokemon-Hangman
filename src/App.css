@@ -1,9 +1,8 @@
 * {
     box-sizing: border-box;
-    background-color: #fafaff;
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: transparent;
 }
-
 
 .visual-word-box > div {
     flex: 1;
@@ -19,28 +18,32 @@
 
 .word-box > div {
     font-size: 1.5vw;
-
 }
 
 .d-flex {
     align-items: center;
-
+    /*justify-content: center;*/
 }
 
 .d-flex > div {
     display: flex;
     flex: 1;
-    flex-flow: row nowrap;
+    /*flex-flow: row nowrap;*/
     justify-content: center;
 }
 
-.d-flex > div > div {
-    font-size: 3vw;
+.hangman-banner {
+    font-size: 2vw;
     margin: 0;
     font-weight: bold;
     color: teal;
 }
 
+.need-help {
+    color: white;
+    padding: 0.25vw 0.5vw;
+    font-size: 1vw;
+}
 /* Header ends */
 
 /* Word */
@@ -52,7 +55,7 @@
 
 .word-box > div {
     font-size: 1.5vw;
-    color: #30343f;
+    color: teal;
 }
 
 /* Word ends */
@@ -72,7 +75,7 @@
     margin: 0.35vw;
     font-weight: 600;
     background-color: teal;
-    color: #fafaff;
+    color: white;
     font-size: 1.5vw;
     border: none;
     border-radius: 100px;
@@ -83,6 +86,13 @@
     transition-timing-function: ease-in-out
 }
 
+.btn-help {
+    background-color: teal;
+    border-radius: 100px;
+    border: none;
+
+}
+
 .btn-clicked {
     margin: 0.35vw;
     font-size: 1.5vw;
@@ -91,12 +101,13 @@
     font-weight: bold;
     color: rgb(128, 128, 128);
     border: none;
+    background-color: transparent;
 }
 
 .btn-default:hover {
     color: teal;
     cursor: pointer;
-    background-color: #fafaff;
+    background-color: transparent;
     outline: 0.2rem solid teal;
     outline-offset: 0.1rem;
     font-weight: bolder;
@@ -106,19 +117,35 @@
 
 /* Visuals */
 .visuals {
-    /* padding-left: 460px; */
     display: flex;
     flex-flow: row nowrap;
+    height: 30vh;
     justify-content: center;
-
 }
 
-.visuals > img {
+.lose-visual {
+    display: flex;
+    flex-flow: row;
     mix-blend-mode: multiply;
-    height: 20vh;
-
+    align-items: center;
+    color: teal;
+    background: none;
+    justify-content: center;
 }
-
+.lose-visual> div > img{
+    /*mix-blend-mode: multiply;*/
+    height: 20vh;
+}
+.lose-message {
+    background: none;
+}
+.lose-reveal-ans {
+    display: flex;
+    font-size: large;
+    font-weight: bolder;
+    justify-content: center;
+    background: none;
+}
 /* Visuals ends */
 
 /* WrongLetters */
@@ -132,26 +159,73 @@
     padding: 0.2rem;
 }
 
-.wrong-letters-box > button {
-    /*margin-top: 15px;*/
+.wrong-letter-circle {
+    display: flex;
+}
+
+.wrong-letter-circle > div {
+    margin: 0.1vw;
+    font-weight: 600;
+    background-color: teal;
+    color: white;
+    font-size: 1.3vw;
+    border: none;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 2vw;
+    height: 2vw;
+}
+
+.wrong-letters-box > div > button {
+    margin-left: 1vw;
     padding: 0.2rem 0.4rem;
     border-radius: 0.3rem;
     border: solid teal 2px;
     color: teal;
 }
 
-.wrong-letters-box > button:hover {
+.wrong-letters-box > div > button:hover {
     color: teal;
     cursor: pointer;
-    background-color: #fafaff;
+    /*background-color: #fafaff;*/
     outline: 0.3rem solid teal;
     outline-offset: 0.1rem;
     font-weight: bolder;
 }
 
 @media (max-width: 600px) {
+    .d-flex {
+        margin: 3vh 0;
+    }
+    .d-flex > div {
+        display: grid;
+    }
+    .hangman-banner {
+        font-size: 4vw;
+    }
+
+    .visuals {
+        display: flex;
+        flex-flow: row nowrap;
+        height: 15vw;
+    }
+
+    .need-help {
+        padding: 1vw 0;
+        font-size: 3vw;
+    }
+
     .wrong-letters-box {
         font-size: 3vw;
+    }
+
+    .wrong-letter-circle > div {
+        font-size: 3vw;
+        margin: 1vw;
+        width: 6vw;
+        height: 6vw;
     }
 
     .word-box > div {

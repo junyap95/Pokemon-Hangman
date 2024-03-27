@@ -40,7 +40,6 @@ function Word() {
       {/* using the array we created from the word fetched, map each alphabet and to the alphabet chosen by user, if they matched, return that alphabet  */}
       {/* A number of components should be rendered using the array.Map() method. Each component rendered in this way should have a key that uniquely identifies it. */}
       {wordArr.map((char, index) => {
-        console.log(char);
         return correctGuesses.includes(char) ? (
           <div key={index}>{char}</div>
         ) : (
