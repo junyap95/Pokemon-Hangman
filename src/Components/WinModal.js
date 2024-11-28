@@ -1,33 +1,52 @@
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import { useSelector } from "react-redux";
+import { useContext } from "react";
+import AppContext from "AppContext";
 
 function WinModal(props) {
-  const answer = useSelector((state) => state.guesses.answer);
-
+  const { pokemonData } = useContext(AppContext);
+  const answer = pokemonData.name;
   // on button click i.e. play again the game resets
   const handleRestart = () => {
     window.location.reload(true);
   };
-
   return (
     <>
-      <Modal
-        show={props.show}
-        onHide={handleRestart}
-        backdrop="static"
-        keyboard={false}
-      >
+      <Modal centered show={props.show} onHide={handleRestart} backdrop="static" keyboard={false}>
         <Modal.Header closeButton>
           <Modal.Title style={{ color: "teal" }}>Congratulations!</Modal.Title>
         </Modal.Header>
         <Modal.Body
-          style={{ color: "#fafaff", background: "teal", size: "large" }}
+          style={{
+            color: "#fafaff",
+            background: "teal",
+            size: "large",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            height: "30vh",
+            justifyContent: "space-between",
+            gap: "1em",
+          }}
         >
-          You win! The answer is {answer}!
+          <div>
+            <span style={{ color: "gold" }}>{pokemonData.shiny ? "Shiny" : ""}</span> {answer} was
+            caught!
+          </div>
+
+          <div className="animated-win-modal">
+            <img alt="answer reveal" src={pokemonData.anim_sprite} />
+          </div>
         </Modal.Body>
         <Modal.Footer
-          style={{ color: "teal", background: "#fafaff", size: "large" }}
+          style={{
+            color: "teal",
+            background: "#fafaff",
+            size: "large",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
         >
           <Button
             style={{ color: "#fafaff", background: "teal", border: "none" }}

@@ -1,3 +1,4 @@
+// @ts-ignore
 import { createSlice } from "@reduxjs/toolkit";
 export const WRONG_GUESS_LIMIT = 6;
 export const guessesSlice = createSlice({
@@ -41,12 +42,7 @@ export const guessesSlice = createSlice({
   },
 });
 
-export const {
-  updateAnswer,
-  updateCorrect,
-  updateWrong,
-  updateErrorCount,
-  updateCorrectCount,
-} = guessesSlice.actions;
+export const { updateAnswer, updateCorrect, updateWrong, updateErrorCount, updateCorrectCount } =
+  guessesSlice.actions;
 
 export default guessesSlice.reducer;

@@ -1,36 +1,42 @@
 import { useSelector } from "react-redux";
-import { useState, useEffect } from "react";
-import { WRONG_GUESS_LIMIT } from "../store/guesses";
-import defaultImg from "../images/state5.GIF";
-import error1 from "../images/state6.GIF";
-import error2 from "../images/state7.GIF";
-import error3 from "../images/state8.GIF";
-import error4 from "../images/state9.GIF";
-import error5 from "../images/state10.gif";
-import error6 from "../images/state11.GIF";
-
-// images
-const visualsArr = [error1, error2, error3, error4, error5, error6];
+import { useContext } from "react";
+import AppContext from "AppContext";
 
 function Visuals() {
-  // user error count registered in store
-  const errorCount = useSelector((state) => state.guesses.errorCount);
-
-  // usestate and setstate to change image according to guesses remaining
-  const [visuals, setVisuals] = useState(defaultImg);
-
-  // whenever errorCount updates in store, this runs
-  useEffect(() => {
-    for (let i = 0; i <= WRONG_GUESS_LIMIT; i++) {
-      if (errorCount === i + 1) {
-        setVisuals(visualsArr[i]);
-      }
-    }
-  }, [errorCount]);
+  const { loading, pokemonData } = useContext(AppContext);
+  const visual = pokemonData.sprite;
+  const wordCount = useSelector((state) => state.guesses.answer.length);
+  const answer = useSelector((state) => state.guesses.answer);
+  const totalLetters = new Set();
+  for (let i = 0; i < wordCount; i++) {
+    totalLetters.add(answer[i]);
+  }
+  const correctCount = useSelector((state) => state.guesses.correctCount);
+  const percentageReveal = ((correctCount / totalLetters.size) * 0.3).toFixed(2);
 
   return (
-    <div className="visuals">
-      <img src={visuals} alt="visual" />
+    <div
+      style={{
+        position: "relative",
+        height: "25svh",
+        border: "none 2px teal",
+        borderStyle: "solid none",
+      }}
+    >
+      <div className="visuals">
+        {loading ? (
+          <img className="pokeball" src={"/poke-ball.png"} alt="pokeball" />
+        ) : (
+          <img
+            style={{
+              filter: `brightness(${percentageReveal}) saturate(0)`,
+            }}
+            className="pokemon"
+            src={visual}
+            alt="visual"
+          />
+        )}
+      </div>
     </div>
   );
 }
