@@ -1,10 +1,11 @@
 import Popover from "react-bootstrap/Popover";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
+import { refreshState } from "store/guesses";
 const popover = (
   <Popover id="popover-basic">
-    <Popover.Header as="h3">How To Play</Popover.Header>
-    <Popover.Body>
+    <Popover.Header as="div">How To Play</Popover.Header>
+    <Popover.Body as="small" style={{ fontSize: "0.8em" }}>
       <ul>
         <li>A secret Pokémon is chosen, and players try to guess the letters in the name.</li>
         <li>
@@ -21,20 +22,19 @@ const popover = (
           Pokéballs are used.
         </li>
       </ul>
-      <strong>
-        <small>Be the very best like no one ever was!</small>
-      </strong>
     </Popover.Body>
   </Popover>
 );
 // a component showing wrong letters guessed and how many guesses left
 function WrongLetters() {
+  const dispatch = useDispatch();
+
   // array of wrong alphabets guessed
   const wrongGuesses = useSelector((state) => state.guesses.wrongGuesses);
   const wrongCount = wrongGuesses.length;
 
   const handleClick = () => {
-    window.location.reload(true);
+    dispatch(refreshState());
   };
 
   // display the wrong letter guessed for each wrong guess
@@ -45,10 +45,10 @@ function WrongLetters() {
         {Array.apply(null, Array(6 - wrongCount)).map((_, index) => (
           <img
             key={`pokeball-${index}`}
-            className="pokeball"
+            className="pokeball inventory"
             src={"/poke-ball.png"}
             alt="pokeball"
-            style={{ height: "2em", animation: "none" }}
+            style={{ height: "2em" }}
           />
         ))}
       </div>

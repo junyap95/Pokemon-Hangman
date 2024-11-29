@@ -1,14 +1,13 @@
 import { useSelector } from "react-redux";
-import { useContext } from "react";
-import AppContext from "AppContext";
 
 export default function Word() {
-  const { pokemonData } = useContext(AppContext);
+  // const { pokemonData } = useContext(AppContext);
+  const pokemonData = useSelector((state) => state.guesses.pokemonData);
   const correctGuesses = useSelector((state) => state.guesses.correctGuesses);
   const wordArr = !!pokemonData.name ? pokemonData.name.split("") : [];
 
   return (
-    <div className="word-box">
+    <div className={`word-box ${wordArr.length > 10 ? "long-word" : ""}`}>
       {wordArr.map((char, index) => {
         return correctGuesses.includes(char) ? (
           <div key={index}>{char}</div>

@@ -1,0 +1,10 @@
+export const clickSound = require("../assets/click-sound.mp3");
+export const clickAudio = new Audio(clickSound);
+export const confirmTap = require("../assets/crisp-tap.mp3");
+export const confirmAudio = new Audio(confirmTap);
+export const lightTap = require("../assets/light-tap.mp3");
+export const tapAudio = new Audio(lightTap);
+export const correctAns = require("../assets/correct_answer_tone.mp3");
+export const correctAudio = new Audio(correctAns);
+export const wrongAns = require("../assets/wrong_answer_tone.mp3");
+export const wrongAudio = new Audio(wrongAns);

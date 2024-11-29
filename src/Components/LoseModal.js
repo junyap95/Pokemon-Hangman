@@ -1,48 +1,89 @@
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
-import AppContext from "AppContext";
-import { useContext } from "react";
+import { refreshState, refreshCatchCounter } from "store/guesses";
+import { useEffect, useState } from "react";
 
 // same concept as WinModal
 function LoseModal(props) {
+  const dispatch = useDispatch();
+  const pokemonData = useSelector((state) => state.guesses.pokemonData);
   const answer = useSelector((state) => state.guesses.answer);
-  const { pokemonData } = useContext(AppContext);
+  const catchCount = useSelector((state) => state.guesses.catchCounter);
+
   const handleRestart = () => {
-    window.location.reload(true);
+    dispatch(refreshState());
+    dispatch(refreshCatchCounter());
   };
+
+  const [isRevealed, setIsReveal] = useState(false);
+  useEffect(() => {
+    setTimeout(() => setIsReveal(true), 2500);
+  });
+
   return (
-    <>
-      <Modal centered show={props.show} onHide={handleRestart} backdrop="static" keyboard={false}>
-        <Modal.Header closeButton>
-          <Modal.Title style={{ color: "teal" }}>Oh No... The Pokemon Ran Away!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body style={{ background: "white", border: "none" }}>
-          <div className="lose-visual">
-            <div>
+    <Modal centered show={props.show} onHide={handleRestart} backdrop="static" keyboard={false}>
+      <Modal.Header closeButton>
+        <Modal.Title style={{ color: "teal", fontSize: "0.8em" }}>
+          Oh No... The Pokémon Ran Away!
+        </Modal.Title>
+      </Modal.Header>
+      <Modal.Body
+        style={{
+          background: "#f5f5f5",
+          height: "30vh",
+          display: "flex",
+        }}
+      >
+        <div className="lose-visual">
+          <div>
+            {!isRevealed ? (
               <img
                 className="ran-away-pokemon"
                 src={pokemonData.back_sprite}
-                alt="clipart-hangman"
+                alt="pokemon back sprite"
               />
-            </div>
-            <div className="lose-message">
-              Alas! The answer is
-              <div className="lose-reveal-ans">{answer}!</div>
-            </div>
+            ) : (
+              <img
+                className="revealed-pokemon"
+                src={pokemonData.sprite}
+                alt="pokemon back sprite"
+              />
+            )}
           </div>
-        </Modal.Body>
-        <Modal.Footer>
-          <Button
-            style={{ color: "#fafaff", background: "teal", border: "none" }}
-            variant="primary"
-            onClick={handleRestart}
-          >
-            Play Again
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+          <div className="answer-box">
+            <div
+              style={{
+                wordWrap: "break-word",
+                width: "100%",
+              }}
+            >
+              The answer is <u style={{ fontWeight: "bold" }}>{answer}</u>!
+            </div>
+            {pokemonData.shiny && (
+              <small>
+                It's a <span>shiny</span>!
+              </small>
+            )}
+          </div>
+        </div>
+      </Modal.Body>
+      <Modal.Footer style={{ display: "flex", justifyContent: "space-between" }}>
+        <div style={{ fontSize: "0.7em", color: "teal" }}>Streak: {catchCount}</div>
+        <Button
+          style={{
+            color: "#fafaff",
+            background: "teal",
+            border: "none",
+            fontSize: "0.75em",
+          }}
+          variant="primary"
+          onClick={handleRestart}
+        >
+          Go Again!
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 }
 

@@ -1,39 +1,54 @@
+.home-page-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100svh;
+  background-color: #008080;
+}
+
+.section-center {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
 .visual-word-box > div {
   flex: 1;
 }
 
 /* Header */
-.word-box {
-  display: flex;
-  flex-flow: column nowrap;
-  justify-content: center;
-  align-items: center;
-  height: 2em;
-}
 
-.word-box > div {
-  font-size: 1.5vw;
+.title-visual {
+  width: 100%;
+  background-color: #f5f5f5;
 }
 
 .nav-wrapper {
+  position: relative;
+  top: 0;
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
+  padding: 1em 0;
+  width: 100%;
+  background-color: teal;
+  color: white;
 }
 
-.header-wrapper {
+/* .header-wrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100svw;
-}
+} */
 
 .hangman-banner {
-  font-size: 2vw;
-  margin: 0;
+  font-size: 1.5em;
   font-weight: bold;
-  color: teal;
 }
 
 /* Header ends */
@@ -41,68 +56,93 @@
 /* Word */
 .word-box {
   display: flex;
-  flex-direction: row;
-  gap: 1em;
+  flex-flow: row wrap;
+  gap: 0.5em;
+  justify-content: center;
+  align-items: center;
+  padding: 0em 0;
+  height: 3em;
+  /* border: 1px solid green; */
 }
 
 .word-box > div {
-  font-size: 1.5vw;
-  color: teal;
+  font-size: 1.5em;
+  color: #f5f5f5;
+  animation: word-reveal 1s ease-in-out;
+}
+
+@keyframes word-reveal {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 /* Word ends */
 
 /* Buttons */
 .buttons-box {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  padding: 1em 20em;
-  row-gap: 1em;
+  display: grid;
+  grid-template-rows: repeat(3, auto);
+  width: 100%;
+  flex-grow: 0.5;
+}
+
+.row-1 {
+  align-self: center;
+  justify-self: center;
+}
+
+.row-2 {
+  grid-template-columns: repeat(9, 1fr);
+  justify-self: center;
+  align-self: center;
+}
+
+.row-3 {
+  grid-template-columns: repeat(7, 1fr);
+  align-self: center;
+  justify-self: center;
 }
 
 .btn-default {
-  margin: 0.35vw;
+  background-color: #f5f5f5;
+  margin: 0.25em;
   font-weight: 600;
-  background-color: teal;
-  color: white;
-  font-size: 1.5vw;
+  color: teal;
+  filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.3));
+  font-size: 1em;
   border: none;
   border-radius: 100px;
-  width: 3.5vw;
-  height: 3.5vw;
-  transition-property: background-color;
-  transition-duration: 0.3s;
-  transition-timing-function: ease-in-out;
+  width: 3em;
+  height: 3em;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+}
+
+.btn-default:active,
+.btn-help:active {
+  transform: scale(0.8);
+}
+
+.btn-default.clicked {
+  font-weight: bold;
+  color: rgb(128, 128, 128);
+  background-color: transparent;
 }
 
 .btn-help {
+  font-size: 0.8em;
   border: none;
   background-color: teal;
   color: white;
   padding: 0.5em 1em;
-}
-
-.btn-clicked {
-  margin: 0.35vw;
-  font-size: 1.5vw;
-  width: 3.5vw;
-  height: 3.5vw;
-  font-weight: bold;
-  color: rgb(128, 128, 128);
-  border: none;
-  background-color: transparent;
-}
-
-.btn-default:hover {
-  color: teal;
-  cursor: pointer;
-  background-color: transparent;
-  outline: 0.2rem solid teal;
-  outline-offset: 0.1rem;
-  font-weight: bolder;
+  border-radius: 1em;
+  transition: all 0.3s ease-in-out;
 }
 
 /* Buttons ends */
@@ -116,39 +156,73 @@
   margin: auto;
 }
 
+/* .lose-visual {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0.5em;
+  overflow: hidden;
+  height: 100%;
+  align-items: center;
+  justify-items: center;
+} */
+
 .lose-visual {
   display: flex;
-  flex-flow: row;
-  mix-blend-mode: multiply;
+  gap: 0.5em;
+  overflow: hidden;
+  height: 100%;
+  width: 100%;
   align-items: center;
-  color: teal;
-  background: none;
   justify-content: center;
 }
-.lose-visual > div > img {
-  /*mix-blend-mode: multiply;*/
-  height: 20vh;
-}
-.lose-message {
-  background: none;
-}
-.lose-reveal-ans {
+
+.lose-visual > div {
   display: flex;
-  font-size: large;
-  font-weight: bolder;
-  justify-content: center;
-  background: none;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.lose-visual > div > img {
+  overflow: hidden;
+  object-fit: contain;
+  height: auto;
+  width: 100%;
+}
+
+.answer-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5em;
+  justify-content: space-evenly;
+  color: teal;
+  width: 100%;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.answer-box > small {
+  color: teal;
+  background-color: gold;
+  font-size: 0.75em;
 }
 /* Visuals ends */
 
 /* WrongLetters */
 .wrong-letters-box {
+  position: relative;
+  bottom: 0;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-size: 1em;
+  font-size: 0.8em;
   color: teal;
-  border-top: solid teal 2px;
+  gap: 0.5em;
+  background-color: #f5f5f5;
+  /* border-top: #f5f5f5 solid 1px; */
+  padding: 1em 0 2em 0;
 }
 
 .wrong-letter-circle {
@@ -176,17 +250,39 @@
   height: 100%;
 }
 
-.pokeball {
-  animation: spin 1500ms;
+.pokeball.loading {
+  animation: spin 2000ms ease-in-out infinite;
+  height: 40%;
+  position: relative;
+  margin: auto;
+  top: 25%;
+}
+
+.pokeball.inventory {
+  animation: slide-left 500ms;
   height: 50%;
+}
+
+@keyframes slide-left {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
 }
 
 @keyframes spin {
   0% {
     transform: rotate(0deg) scale(0);
   }
-  100% {
+
+  50% {
     transform: rotate(360deg) scale(1);
+  }
+
+  100% {
+    transform: rotate(-360deg) scale(0);
   }
 }
 
@@ -201,10 +297,6 @@
   }
 }
 
-/* .win-modal-image {
-  height: 0%;
-} */
-
 .animated-win-modal {
   box-sizing: border-box;
   width: 100%;
@@ -216,11 +308,16 @@
   height: 100%;
   object-fit: contain;
   position: absolute;
+  width: 50%;
   inset: 0;
   margin: auto;
 }
 
 @media (min-width: 700px) and (max-width: 900px) {
+  * {
+    font-size: 0.9em;
+  }
+
   .title-visual {
     display: flex;
     width: 100svw;
@@ -230,10 +327,13 @@
   .buttons-box {
     padding: 1em 6em;
     row-gap: 1em;
+    width: 100%;
   }
 
-  .header-wrapper {
+  .nav-wrapper {
     width: fit-content;
+    background-color: #f5f5f5;
+    color: teal;
   }
 
   .modal-body {
@@ -247,21 +347,63 @@
 
   .animated-win-modal > img {
     height: 100%;
+    width: 100%;
     object-fit: contain;
     position: static;
     inset: none;
     margin: 0;
   }
+
+  .visuals {
+    height: 150%;
+  }
 }
 
 @media (max-width: 700px) {
+  .section-center {
+    /* justify-content: flex-start; */
+    justify-content: space-evenly;
+  }
+
   .buttons-box {
-    padding: 1em 1em;
-    row-gap: 1em;
+    width: 100%;
+    padding: 0.5em;
+    gap: 1em;
+    justify-content: center;
+    grid-template-columns: 1fr;
+  }
+
+  .row-1 {
+    display: flex;
+    justify-content: center;
+    gap: 0.2em;
+    align-self: center;
+    width: 100%;
+    /* border: 1px solid red; */
+  }
+  .row-2 {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    gap: 0.2em;
+    /* border: 1px solid red; */
+  }
+  .row-3 {
+    display: flex;
+    justify-content: center;
+    align-self: center;
+    width: 100%;
+    gap: 0.2em;
+    /* border: 1px solid red; */
+  }
+
+  .nav-wrapper > small {
+    font-size: 0.75em;
   }
 
   .hangman-banner {
-    font-size: 4vw;
+    font-size: 0.8em;
   }
 
   .visuals {
@@ -281,21 +423,21 @@
   }
 
   .word-box > div {
-    font-size: 5vw;
+    font-weight: 600;
+    font-size: 1em;
   }
 
-  .buttons-box {
-    margin: 0;
-    padding: 10vw 6vw;
-    row-gap: 0.5em;
+  .long-word > div {
+    font-weight: 600;
+    font-size: 0.8em;
   }
 
   .btn-default,
   .btn-clicked {
-    margin: 2vw;
-    width: 8.5vw;
-    height: 8.5vw;
-    font-size: 3vw;
+    margin: 0.01em;
+    width: 3em;
+    height: 4em;
+    font-size: 0.7em;
   }
 }
 
@@ -320,23 +462,41 @@
 @keyframes gone {
   0% {
     transform: scale(1);
+    opacity: 1;
   }
-  25% {
+  /* 25% {
     transform: scale(0.75);
-  }
-  50% {
-    transform: scale(0.5);
-  }
+  } */
+
   75% {
     transform: scale(0.25);
+    opacity: 0.5;
   }
   100% {
     transform: scale(0);
+    opacity: 0;
   }
 }
 
 .ran-away-pokemon {
   filter: saturate(100%);
   transform: scale(0);
-  animation: gone 8s ease-in-out;
+  animation: gone 2.5s linear;
+  width: 80%;
+  height: auto;
+}
+
+.revealed-pokemon {
+  animation: reveal 500ms ease-in-out;
+}
+
+@keyframes reveal {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }

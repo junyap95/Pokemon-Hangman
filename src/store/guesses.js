@@ -10,12 +10,27 @@ export const guessesSlice = createSlice({
     wrongGuesses: [],
     correctCount: 0,
     errorCount: 0,
+    loading: true,
+    pokemonData: {},
+    restart: false,
+    catchCounter: 0,
   },
 
   reducers: {
-    // from API
     updateAnswer: (state, action) => {
       state.answer = action.payload;
+    },
+
+    updateRestart: (state, action) => {
+      state.restart = action.payload;
+    },
+
+    updatePokemonData: (state, action) => {
+      state.pokemonData = action.payload;
+    },
+
+    updateLoading: (state, action) => {
+      state.loading = action.payload;
     },
 
     // register each correct alphabet to the store state
@@ -39,10 +54,40 @@ export const guessesSlice = createSlice({
     updateCorrectCount: (state) => {
       state.correctCount++;
     },
+
+    incrementCatchCounter: (state) => {
+      state.catchCounter++;
+    },
+
+    refreshCatchCounter: (state) => {
+      state.catchCounter = 0;
+    },
+
+    refreshState: (state) => {
+      state.answer = "";
+      state.correctGuesses = [];
+      state.wrongGuesses = [];
+      state.correctCount = 0;
+      state.errorCount = 0;
+      state.loading = true;
+      state.pokemonData = {};
+      state.restart = true;
+    },
   },
 });
 
-export const { updateAnswer, updateCorrect, updateWrong, updateErrorCount, updateCorrectCount } =
-  guessesSlice.actions;
+export const {
+  updateLoading,
+  updateAnswer,
+  updateCorrect,
+  updateWrong,
+  updateErrorCount,
+  updateCorrectCount,
+  updatePokemonData,
+  updateRestart,
+  refreshState,
+  incrementCatchCounter,
+  refreshCatchCounter,
+} = guessesSlice.actions;
 
 export default guessesSlice.reducer;

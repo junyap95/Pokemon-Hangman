@@ -1,30 +1,20 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import {
-  updateCorrect,
-  updateErrorCount,
-  updateWrong,
-  updateCorrectCount,
-} from "../store/guesses";
+import { updateCorrect, updateErrorCount, updateWrong, updateCorrectCount } from "../store/guesses";
 
 function SingleBtn(props) {
-  // select the current answer from store
-  const correctAnswer = useSelector((state) => state.guesses.answer);
   const dispatch = useDispatch();
-  const [disable, setDisable] = useState(false);
-  const [btnClicked, setBtnClicked] = useState("btn-default");
+  const correctAnswer = useSelector((state) => state.guesses.answer);
+  const restart = useSelector((state) => state.guesses.restart);
+  const [btnClicked, setBtnClicked] = useState(false);
+
+  useEffect(() => {
+    if (restart) setBtnClicked(false);
+  }, [restart]);
 
   const handleClick = (e) => {
-    // disable the button whenever clicked
-    setDisable(true);
-
-    // usestate to change CSS class
-    setBtnClicked("btn-clicked");
-
-    // this returns boolean
+    setBtnClicked(true);
     const isCorrect = correctAnswer.includes(e.target.value);
-
-    // if button click matches any of the word's alphabets, update that button value to store correct guesses, and vice versa
     if (isCorrect) {
       dispatch(updateCorrect(e.target.value));
       dispatch(updateCorrectCount());
@@ -36,8 +26,8 @@ function SingleBtn(props) {
 
   return (
     <button
-      className={btnClicked}
-      disabled={disable}
+      className={`btn-default ${btnClicked ? "clicked" : ""}`}
+      disabled={btnClicked}
       value={props.item}
       onClick={handleClick}
     >
