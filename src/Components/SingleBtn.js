@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { updateCorrect, updateErrorCount, updateWrong, updateCorrectCount } from "../store/guesses";
+import { tapAudio } from "utils/audio";
 
 function SingleBtn(props) {
   const dispatch = useDispatch();
@@ -13,6 +14,8 @@ function SingleBtn(props) {
   }, [restart]);
 
   const handleClick = (e) => {
+    tapAudio.currentTime = 0;
+    tapAudio.play();
     setBtnClicked(true);
     const isCorrect = correctAnswer.includes(e.target.value);
     if (isCorrect) {
